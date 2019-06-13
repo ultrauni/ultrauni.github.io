@@ -26,7 +26,7 @@
     beforeMove: null,
     afterMove: null,
     loop: false,
-    responsiveFallback: 1024,
+    responsiveFallback: 600,
     direction : 'vertical'
 	};
 
@@ -34,33 +34,30 @@
 	/*  Credit: Eike Send for the awesome swipe event */
 	/*------------------------------------------------*/
 
-	$.fn.swipeEvents = function() {
+$.fn.swipeEvents = function() {
       return this.each(function() {
 
-        
         var startX,
             startY,
             $this = $(this);
-        
+
         $this.bind('touchstart', touchstart);
-        
+
         function touchstart(event) {
           var touches = event.originalEvent.touches;
           if (touches && touches.length) {
             startX = touches[0].pageX;
             startY = touches[0].pageY;
             $this.bind('touchmove', touchmove);
-            $this.bind('touchend', touchend);
           }
-          event.preventDefault();
         }
-        
+
         function touchmove(event) {
           var touches = event.originalEvent.touches;
           if (touches && touches.length) {
             var deltaX = startX - touches[0].pageX;
             var deltaY = startY - touches[0].pageY;
-            
+
             if (deltaX >= 50) {
               $this.trigger("swipeLeft");
             }
@@ -75,19 +72,13 @@
             }
             if (Math.abs(deltaX) >= 50 || Math.abs(deltaY) >= 50) {
               $this.unbind('touchmove', touchmove);
-              $this.unbind('touchend', touchend);
             }
           }
-          event.preventDefault();
-        }
-        
-        function touchend(event) {
-          $this.unbind('touchmove', touchmove);
-          event.preventDefault();
         }
 
       });
     };
+
 
 
   $.fn.onepage_scroll = function(options){
@@ -99,7 +90,7 @@
         topPos = 0,
         leftPos = 0,
         lastAnimation = 0,
-        quietPeriod = 500,
+        quietPeriod = 300,
         paginationList = "";
 
     $.fn.transformPage = function(settings, pos, index) {
