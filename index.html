@@ -187,7 +187,7 @@
       -webkit-box-sizing: border-box;
       background: rgba(255, 255, 255, 0.25);
       font-weight: bold;
-      font-size: 15px;
+      font-size: calc(9px + 0.5vw);
       color: #000;
       -webkit-transition: all 500ms ease-in-out;
       -moz-transition: all 500ms ease-in-out;
@@ -513,11 +513,12 @@
     }*/
     
     body.disabled-onepage-scroll .onepage-wrapper  section {
-      min-height: 100%;
-      height: auto;
+      /*min-height: 35%;*/
+      height: 50vw;
+      padding-top: 10%;
     }
     
-    body.disabled-onepage-scroll .main section .page_container, body.disabled-onepage-scroll .main section.page3 .page_container  {
+    body.disabled-onepage-scroll .main section .page_container, body.disabled-onepage-scroll .main section.page3 .page_container    {
       padding: 20px;
       margin-top: 150px;
       -webkit-box-sizing: border-box;
@@ -618,7 +619,7 @@
   	    </div>
       </section> -->
     </div>
-    <a class="back" target="_blank" href="document/cv.pdf">My Curriculum Vitae</a>
-  </div>
+      <a class="back" target="_blank" href="document/cv.pdf">My Curriculum Vitae</a>
+    </div>
 </body>
 </html>
