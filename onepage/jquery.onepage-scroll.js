@@ -133,7 +133,6 @@
     }
 
     $.fn.moveDown = function() {
-      console.log("moveDown");
       var el = $(this)
       index = $(settings.sectionContainer +".active").data("index");
       current = $(settings.sectionContainer + "[data-index='" + index + "']");
@@ -257,10 +256,22 @@
 
         el.swipeEvents().bind("swipeDown",  function(event){
           if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+          var timeNow = new Date().getTime();
+          if(timeNow - lastAnimation < quietPeriod + settings.animationTime) {
+              event.preventDefault();
+              return;
+          }
           el.moveUp();
+          lastAnimation = timeNow;
         }).bind("swipeUp", function(event){
           if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+          var timeNow = new Date().getTime();
+          if(timeNow - lastAnimation < quietPeriod + settings.animationTime) {
+              event.preventDefault();
+              return;
+          }
           el.moveDown();
+          lastAnimation = timeNow;
         });
 
         $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
@@ -322,10 +333,22 @@
 
     el.swipeEvents().bind("swipeDown",  function(event){
       if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+      var timeNow = new Date().getTime();
+      if(timeNow - lastAnimation < quietPeriod + settings.animationTime) {
+          event.preventDefault();
+          return;
+      }
       el.moveUp();
+      lastAnimation = timeNow;
     }).bind("swipeUp", function(event){
       if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
+      var timeNow = new Date().getTime();
+      if(timeNow - lastAnimation < quietPeriod + settings.animationTime) {
+          event.preventDefault();
+          return;
+      }
       el.moveDown();
+      lastAnimation = timeNow;
     });
 
     // Create Pagination and Display Them
